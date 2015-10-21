@@ -1,0 +1,21 @@
+{
+	"keywords" : [
+		"freestyle",
+		"sports science"
+	],
+	"autoload" : {
+		"psr-4" : {
+			"gossi\\freestyle\\" : "src"
+		}
+	},
+	"name" : "gossi/freestyle-evaluation",
+	"type" : "project",
+	"description" : "freestyle judging evaluation",
+	"license" : "MIT",
+	"require" : {
+		"php" : ">=5.4",
+		"phootwork/collection" : "~1",
+		"league/csv" : "~7",
+		"twig/twig" : "~1"
+	}
+}
