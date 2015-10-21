@@ -10,10 +10,10 @@ install:
   - composer install
 
 script:
-
-after_success:
   - mv data/ freestyle-evaluation/
   - mv src/ freestyle-evaluation/
   - mv templates/ freestyle-evaluation/
   - mv index.php freestyle-evaluation/
+
+after_success:
   - ncftpput -u $FTPUSER -p $FTPPASS -R einradfahren.de /uniscience.einradfahren.de freestyle-evaluation/
