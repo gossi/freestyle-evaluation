@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Freestyle Evaluation</title>
+  <title>Freestyle Judging Evaluation</title>
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
@@ -14,10 +14,10 @@
 
 <body>
   <div class="container">
-  	<h1>Freestyle Evaluation</h1>
-  	
+  	<h1>Freestyle Judging Evaluation</h1>
+
   	<h2>ODM 2015: Performance</h2>
-  	
+
   	{% for group in groups %}
   		<h3>{{ group.getTitle() }}</h3>
   		{% include 'routines.twig' %}

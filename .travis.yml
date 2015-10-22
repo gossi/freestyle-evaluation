@@ -10,6 +10,7 @@ install:
   - composer install
 
 script:
+  - mkdir freestyle-evaluation
   - mv data/ freestyle-evaluation/
   - mv src/ freestyle-evaluation/
   - mv vendor/ freestyle-evaluation/
