@@ -12,6 +12,7 @@ install:
 script:
   - mv data/ freestyle-evaluation/
   - mv src/ freestyle-evaluation/
+  - mv vendor/ freestyle-evaluation/
   - mv templates/ freestyle-evaluation/
   - mv index.php freestyle-evaluation/
 
