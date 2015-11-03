@@ -1,14 +1,14 @@
-<table class="table table-striped table-condensed table-bordered">
+<table class="table table-striped table-condensed table-bordered table-hover">
 <thead>
 	<tr>
 		<th rowspan="2">Name</th>
-		<th colspan="{{ 6 + group.getPerformanceJudges().size() }}">Performance: Total</th>
+		<th colspan="{{ 6 + group.getPerformanceJudges().size() }}" class="active">Performance: Total</th>
 		<th rowspan="2" style="width: 10px"></th>
-		<th colspan="{{ 6 + group.getPerformanceJudges().size() }}">Performance: Execution</th>
+		<th colspan="{{ 6 + group.getPerformanceJudges().size() }}" class="success">Performance: Execution</th>
 		<th rowspan="2" style="width: 10px"></th>
-		<th colspan="{{ 6 + group.getPerformanceJudges().size() }}">Performance: Choreography</th>
+		<th colspan="{{ 6 + group.getPerformanceJudges().size() }}" class="info">Performance: Choreography</th>
 		<th rowspan="2" style="width: 10px"></th>
-		<th colspan="{{ 6 + group.getPerformanceJudges().size() }}">Performance: Music and Timing</th>
+		<th colspan="{{ 6 + group.getPerformanceJudges().size() }}" class="warning">Performance: Music and Timing</th>
 	</tr>
 	<tr>
 		<th>AVG</th>
@@ -21,34 +21,34 @@
 			<th>{{ p.getName() }}</th>
 		{% endfor %}
 		
-		<th>AVG</th>
-		<th>MIN</th>
-		<th>MAX</th>
-		<th>RANGE</th>
-		<th>SD</th>
-		<th>V</th>
+		<th class="success">AVG</th>
+		<th class="success">MIN</th>
+		<th class="success">MAX</th>
+		<th class="success">RANGE</th>
+		<th class="success">SD</th>
+		<th class="success">V</th>
 		{% for p in group.getPerformanceJudges() %}
-			<th>{{ p.getName() }}</th>
+			<th class="success">{{ p.getName() }}</th>
 		{% endfor %}
 		
-		<th>AVG</th>
-		<th>MIN</th>
-		<th>MAX</th>
-		<th>RANGE</th>
-		<th>SD</th>
-		<th>V</th>
+		<th class="info">AVG</th>
+		<th class="info">MIN</th>
+		<th class="info">MAX</th>
+		<th class="info">RANGE</th>
+		<th class="info">SD</th>
+		<th class="info">V</th>
 		{% for p in group.getPerformanceJudges() %}
-			<th>{{ p.getName() }}</th>
+			<th class="info">{{ p.getName() }}</th>
 		{% endfor %}
 		
-		<th>AVG</th>
-		<th>MIN</th>
-		<th>MAX</th>
-		<th>RANGE</th>
-		<th>SD</th>
-		<th>V</th>
+		<th class="warning">AVG</th>
+		<th class="warning">MIN</th>
+		<th class="warning">MAX</th>
+		<th class="warning">RANGE</th>
+		<th class="warning">SD</th>
+		<th class="warning">V</th>
 		{% for p in group.getPerformanceJudges() %}
-			<th>{{ p.getName() }}</th>
+			<th class="warning">{{ p.getName() }}</th>
 		{% endfor %}
 	</tr>
 </thead>
@@ -57,7 +57,7 @@
 <tr>
 	<td style="white-space: nowrap;">{{ routine.getName() }}</td>
 	
-	{% set total = analyzer.analyze(routine) %}
+	{% set total = results.getTotal(routine) %}
 	<td class="right-align">{{ "%.2f"|format(total.getAvg()) }}</td>
 	<td class="right-align">{{ "%.2f"|format(total.getMin()) }}</td>
 	<td class="right-align">{{ "%.2f"|format(total.getMax()) }}</td>
@@ -68,9 +68,11 @@
 	{% for i in 1..group.getPerformanceJudges().size() %}
 		<td class="right-align">{{ "%.2f"|format(routine.getPerformanceScore(i).getTotal()) }}</td>
 	{% endfor %}
-	<td></td>
+	{% if loop.first %}
+	<td rowspan="{{ group.getRoutines().size() }}"></td>
+	{% endif %}
 	
-	{% set execution = analyzer.analyze(routine, 'execution') %}
+	{% set execution = results.getExecution(routine) %}
 	<td class="right-align">{{ "%.2f"|format(execution.getAvg()) }}</td>
 	<td class="right-align">{{ "%.2f"|format(execution.getMin()) }}</td>
 	<td class="right-align">{{ "%.2f"|format(execution.getMax()) }}</td>
@@ -81,9 +83,11 @@
 	{% for i in 1..group.getPerformanceJudges().size() %}
 		<td class="right-align">{{ "%.2f"|format(routine.getPerformanceScore(i).getExecution()) }}</td>
 	{% endfor %}
-	<td></td>
+	{% if loop.first %}
+	<td rowspan="{{ group.getRoutines().size() }}"></td>
+	{% endif %}
 	
-	{% set choreography = analyzer.analyze(routine, 'choreography') %}
+	{% set choreography = results.getChoreography(routine) %}
 	<td class="right-align">{{ "%.2f"|format(choreography.getAvg()) }}</td>
 	<td class="right-align">{{ "%.2f"|format(choreography.getMin()) }}</td>
 	<td class="right-align">{{ "%.2f"|format(choreography.getMax()) }}</td>
@@ -94,9 +98,11 @@
 	{% for i in 1..group.getPerformanceJudges().size() %}
 		<td class="right-align">{{ "%.2f"|format(routine.getPerformanceScore(i).getChoreography()) }}</td>
 	{% endfor %}
-	<td></td>
+	{% if loop.first %}
+	<td rowspan="{{ group.getRoutines().size() }}"></td>
+	{% endif %}
 	
-	{% set music = analyzer.analyze(routine, 'music') %}
+	{% set music = results.getMusicAndTiming(routine) %}
 	<td class="right-align">{{ "%.2f"|format(music.getAvg()) }}</td>
 	<td class="right-align">{{ "%.2f"|format(music.getMin()) }}</td>
 	<td class="right-align">{{ "%.2f"|format(music.getMax()) }}</td>

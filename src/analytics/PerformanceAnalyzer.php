@@ -5,6 +5,11 @@ use gossi\freestyle\model\Routine;
 
 class PerformanceAnalyzer {
 	
+	/**
+	 * @param Routine $routine
+	 * @param string $target
+	 * @return PerformanceResult
+	 */
 	public function analyze(Routine $routine, $target = 'total') {
 		$methods = [
 			'total' => 'getTotal',
@@ -15,7 +20,6 @@ class PerformanceAnalyzer {
 		
 		$method = $methods[$target];
 		$result = new PerformanceResult($routine);
-		
 		
 		$sum = 0;
 		$min = 30;

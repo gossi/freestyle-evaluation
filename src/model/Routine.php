@@ -5,15 +5,21 @@ use phootwork\collection\ArrayList;
 
 class Routine {
 	
+	private $id;
 	private $name;
 	
 	private $group;
 	
 	private $performaceScores;
 	
-	public function __construct($name) {
+	public function __construct($id, $name) {
+		$this->id = $id;
 		$this->name = $name;
 		$this->performaceScores = new ArrayList();
+	}
+	
+	public function getId() {
+		return $this->id;
 	}
 	
 	public function getName() {

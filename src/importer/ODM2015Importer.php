@@ -101,7 +101,7 @@ class ODM2015Importer {
 	
 	private function getRoutine($id) {
 		if (!$this->routines->has($id)) {
-			$this->routines->set($id, new Routine('Routine #' . $id));
+			$this->routines->set($id, new Routine($id, 'Routine #' . $id));
 		}
 
 		return $this->routines->get($id);

@@ -17,6 +17,81 @@
   	<h1>Freestyle Judging Evaluation</h1>
 
   	<h2>ODM 2015: Performance</h2>
+  	
+  	<h3>Average</h3>
+  	
+  	<table class="table table-striped table-condensed table-bordered">
+	<thead>
+		<tr>
+			<th colspan="5" class="active">Performance: Total</th>
+			<th rowspan="2"></th>
+			<th colspan="5" class="success">Performance: Execution</th>
+			<th rowspan="2"></th>
+			<th colspan="5" class="info">Performance: Choreography</th>
+			<th rowspan="2"></th>
+			<th colspan="5" class="warning">Performance: Music and Timing</th>
+		</tr>
+		<tr	class="avg-header">
+			<th>∅ MIN</th>
+			<th>∅ MAX</th>
+			<th>∅ RANGE</th>
+			<th>∅ SD</th>
+			<th>∅ V</th>
+			
+			<th class="success">∅ MIN</th>
+			<th class="success">∅ MAX</th>
+			<th class="success">∅ RANGE</th>
+			<th class="success">∅ SD</th>
+			<th class="success">∅ V</th>
+			
+			<th class="info">∅ MIN</th>
+			<th class="info">∅ MAX</th>
+			<th class="info">∅ RANGE</th>
+			<th class="info">∅ SD</th>
+			<th class="info">∅ V</th>
+			
+			<th class="warning">∅ MIN</th>
+			<th class="warning">∅ MAX</th>
+			<th class="warning">∅ RANGE</th>
+			<th class="warning">∅ SD</th>
+			<th class="warning">∅ V</th>
+		</tr>
+  	</thead>
+  	<tbody>
+  		<tr>
+  			{% set total = results.getAverageTotal() %}
+  			<td class="right-align">{{ "%.2f"|format(total.getMin()) }}</td>
+  			<td class="right-align">{{ "%.2f"|format(total.getMax()) }}</td>
+  			<td class="right-align">{{ "%.2f"|format(total.getRange()) }}</td>
+  			<td class="right-align">{{ "%.2f"|format(total.getSd()) }}</td>
+  			<td class="right-align">{{ "%.2f"|format(total.getVariance()) }}</td>
+  			<td></td>
+
+			{% set execution = results.getAverageExecution() %}  		
+  			<td class="right-align">{{ "%.2f"|format(execution.getMin()) }}</td>
+  			<td class="right-align">{{ "%.2f"|format(execution.getMax()) }}</td>
+  			<td class="right-align">{{ "%.2f"|format(execution.getRange()) }}</td>
+  			<td class="right-align">{{ "%.2f"|format(execution.getSd()) }}</td>
+  			<td class="right-align">{{ "%.2f"|format(execution.getVariance()) }}</td>
+	  		<td></td>
+	  		
+  			{% set choreography = results.getAverageChoreography() %}
+  			<td class="right-align">{{ "%.2f"|format(choreography.getMin()) }}</td>
+  			<td class="right-align">{{ "%.2f"|format(choreography.getMax()) }}</td>
+  			<td class="right-align">{{ "%.2f"|format(choreography.getRange()) }}</td>
+  			<td class="right-align">{{ "%.2f"|format(choreography.getSd()) }}</td>
+  			<td class="right-align">{{ "%.2f"|format(choreography.getVariance()) }}</td>
+  			<td></td>
+  			
+  			{% set music = results.getAverageMusicAndTiming() %}
+  			<td class="right-align">{{ "%.2f"|format(music.getMin()) }}</td>
+  			<td class="right-align">{{ "%.2f"|format(music.getMax()) }}</td>
+  			<td class="right-align">{{ "%.2f"|format(music.getRange()) }}</td>
+  			<td class="right-align">{{ "%.2f"|format(music.getSd()) }}</td>
+  			<td class="right-align">{{ "%.2f"|format(music.getVariance()) }}</td>
+  		</tr>
+  	</tbody>
+  	</table>
 
   	{% for group in groups %}
   		<h3>{{ group.getTitle() }}</h3>

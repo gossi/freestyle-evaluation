@@ -13,7 +13,7 @@ class PerformanceResult {
 	private $sd;
 	private $variance;
 	
-	public function __construct(Routine $routine) {
+	public function __construct(Routine $routine = null) {
 		$this->routine = $routine;
 	}
 	
